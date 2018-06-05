@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Box Model */
+html {
+  font-size: 16px;
+}
+
+:root {
+  --brand-color: rgb(123, 116, 116);
+  --bard-white: #e1e1e1;
+  --nav-height: 50px;
+  --header-font-color: #ffffff;
+}
+
+.button-content{
+  height: 45px;
+  margin: 60px;
+}
+
+.button{
+  background-color: #57b356;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  font-style: sans-serif;
+  font-size: 22px;
+}
+
+.headers-grid-block{
+  font-size: 20px;
+}
+
+.text-grid-block {
+  margin-top: 10px;
+  width: 49%;
+  display: inline-block;
+}
+
+.grid-rigth {
+  max-width: 49%;
+  float: right;
+}
+
+.block2 {
+  margin-top: 70px;
+}
+
+.title-slogan {
+  font-size: 27px;
+  font-style: italic;
+}
+
+.author-slogan {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.block-slogan {
+  display: inline-block;
+  max-width: 34%;
+  margin-left: 15px;
+}
+
+.text-grid {
+  margin-top: 20px;
+  width: 85%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title-grid {
+  color: #818080;
+}
+
+.subtitle-grid {
+  color: #ab6d4d;
+}
+
+.headers-grid-text{
+  text-align: center;
+  font-size: 25px;
+}
+
+.content {
+  margin-top: 50px;
+}
+
+.block {
+  display: inline-block;
+  max-width: 23%;
+  margin-top: 40px;
+}
+
+.image-content-grid {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.text-header{
+  width: 300px;
+  padding: 70px 0;
+  margin-left: 50px;
+  color: var(--header-font-color);
+}
+
+.font-header{
+  font-size: 50px;  
+}
+
+.input-search {
+  border-radius: 10px;
+}
+
+.navbar {
+  background-color: var(--brand-color);
+  height: var(--nav-height);
+}
+
+.image-content {
+  background-image: url(drums.png);
+  height: 250px;
+  background-repeat: no-repeat;
+  background-size: 100% 140%;
+  width: 100%;
+}
+
+.navbar__list {
+  list-style: none;
+  padding: calc((var(--nav-height) - 35px )/2) 0;
+  display: inline-block;
+}
+
+.navbar__item {
+  display: inline-block;
+  padding: 10px 20px;
+}
+
+.navbar__link,
+.navbar__link--flex,
+.navbar__link--grid,
+.navbar__link--mobile {
+  color: var(--bard-white);
+  text-decoration: none;
+}
+
+.inline {
+  display: inline-block;
+}
