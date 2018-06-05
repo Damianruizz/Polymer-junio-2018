@@ -1,12 +1,13 @@
-(() => {
-	'use strict';
+(function() {
+  'use strict';
 
-	const sidenavButton = document.getElementsByClassName('toggleSidenav');
-	const sideNav = document.querySelector('.sidenav');
+  const sidenavButton = document.getElementsByClassName('toggleSidenav');
+  const sideNav = document.querySelector('.sidenav');
 
-	for(let button of sidenavButton){
-		button.addEventListener('click', () => {
-			sideNav.classList.add('sidenav--open');
-		});
-	}
+  for(let button of sidenavButton) {
+    button.addEventListener('click', () => {
+      sideNav.classList.toggle('sidenav--open');
+    });
+  };
+
 })();

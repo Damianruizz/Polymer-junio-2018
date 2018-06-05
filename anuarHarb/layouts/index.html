@@ -2,7 +2,9 @@
 <html lang="es">
   <head>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" media="min-width:426px">
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejemplos de Layouts</title>
   </head>
   <body>
@@ -62,6 +64,40 @@
       </ul>
     </nav>
 
+    <br>
+    <br>
+    <hr>
+    <br>
+    <br>
+
+    <nav class="navbar--mobile">
+      <ul class="navbar__list--mobile">
+        <li class="navbar__item--mobile">
+          <a class="navbar__link--mobile" href="">Grid</a>
+        </li>
+        <li class="navbar__item--mobile">
+          <a class="navbar__link--mobile" href="">About us</a>
+        </li>
+        <li class="navbar__item--mobile">
+          <a class="navbar__link--mobile" href="">Contacto</a>
+        </li>
+      </ul>
+      <button class="navbar__menu--mobile toggleSidenav">Menu</button>
+    </nav>
+    <nav class="sidenav">
+      <span class="toggleSidenav">x</span>
+      <ul class="sidenav__list">
+        <li class="sidenav__item">
+          <a class="sidenav__link" href="">Mobile</a>
+        </li>
+        <li class="sidenav__item">
+          <a class="sidenav__link" href="">About us</a>
+        </li>
+        <li class="sidenav__item">
+          <a class="sidenav__link" href="">Contacto</a>
+        </li>
+      </ul>
+    </nav>
 
     <br>
     <br>
@@ -84,7 +120,7 @@
       </ul>
     </nav>
 
+    <script src="index.js" async></script>
 
-    <script type="text/javascript" src="index.js" async></script>
   </body>
 </html>
