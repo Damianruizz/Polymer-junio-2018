@@ -8,6 +8,10 @@ html {
   font-size: 16px;
 }
 
+body {
+  font-family: sans-serif;
+}
+
 :root {
   --brand-color: rgb(123, 116, 116);
   --bard-white: #e1e1e1;
@@ -26,11 +30,10 @@ html {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 35%;
+  width: 40%;
   color: white;
-  padding: 15px;
+  padding: 20px;
   border-radius: 10px;
-  font-style: sans-serif;
   font-size: 22px;
 }
 
@@ -42,6 +45,7 @@ html {
   margin-top: 10px;
   width: 49%;
   display: inline-block;
+  float: left;
 }
 
 .grid-rigth {
@@ -50,7 +54,7 @@ html {
 }
 
 .block2 {
-  margin-top: 70px;
+  margin: 70px;
 }
 
 .title-slogan {
@@ -67,7 +71,6 @@ html {
 .block-slogan {
   display: inline-block;
   max-width: 34%;
-  margin-left: 15px;
 }
 
 .text-grid {
@@ -158,3 +161,24 @@ html {
 .inline {
   display: inline-block;
 }
+
+@media only screen and (max-width: 768px) {
+  .block {
+    max-width: 32%;
+  }
+  #block4 {
+    visibility: hidden;
+    display: none;
+  }
+  .grid-rigth{
+    display: none;
+    visibility: hidden;
+  }
+  .block-slogan {
+    max-width: 100%;
+  }
+}
+
+
+
+
