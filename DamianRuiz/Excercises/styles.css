@@ -179,6 +179,35 @@ body {
   }
 }
 
+@media only screen and (max-width: 425px) {
+  .block {
+    max-width: 49%;
+    font-size: 13px;
+  }
+  #block3 {
+    visibility: hidden;
+    display: none;
+  }
+  .headers-grid-text{
+    font-size: 18px;
+  }
+  .block2 {
+    visibility: hidden;
+    display: none;
+  }
+  .button{
+    width: 90%;
+  }
+  .text-header {
+    width: 100%;
+    margin-left: 25px;
+  }
+
+  .navbar__list {
+    display: none;
+  }
+}
+
 
 
 
