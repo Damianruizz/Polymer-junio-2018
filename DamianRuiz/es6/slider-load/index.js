@@ -15,12 +15,16 @@
 				clearInterval(interval);
 				document.getElementById("messagge").innerHTML = '¡Carga Exitosa!';
 			} 
-		}, 150);
+		}, getTime());
 	});
 
 	function getAdvance(){
 		return Math.floor((Math.random() * 5) + 1);
 	}
-	
+
+	function getTime(){
+		return Math.floor((Math.random() * 100) + 1);
+	}
+
 
 })();
