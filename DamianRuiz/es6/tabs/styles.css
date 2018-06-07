@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Box Model */
+html {
+  font-size: 12px;
+  height: 100%
+}
+
+body {
+  font-family: sans-serif;
+  height: 100%
+}
+
+.content{
+  height: 100%;
+  position: relative;
+}
+
+.active {
+  background-color: #8bc34aa3;
+  color: white;
+}
+
+.none{
+  display: none;
+}
+
+.content-table{
+  width: 90%;
+  height: 88%;
+  margin: 0 auto;
+  margin-top: 14px;
+  border-radius: 5px;
+}
+
+.content-text{
+  display: none;
+}
+
+span{
+  display: block;
+}
+
+.center{
+  margin: 22%;
+}
+
+.list-element{
+  display: inline-block;
+  padding: 10px 40px;
+  border: 1px solid black;
+  border-radius: 6px;
+}
+
+.table{
+  border: 1px solid black;
+  width: 50%;
+  height: 70%;
+  top: 50%;
+  border-radius: 8px;
+}
+
+button{
+  font-size: 15px;
+  background-color: #03A9F4;
+  padding: 5px 50px;
+  border-radius: 10px;
+  color: white;
+}
