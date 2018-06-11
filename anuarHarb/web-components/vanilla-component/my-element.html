@@ -1,0 +1,74 @@
+<template id="myElementTemplate">
+  <style>
+    button {
+      background-color: purple;
+      color: white;
+    }
+  </style>
+  <button>My element button</button>
+</template>
+
+<script>
+  (function myElement(customElements, document) {
+    'use strict';
+
+    class MyElement extends HTMLElement {
+      static get observedAttributes() { // Atributos que queremos seguir
+        return ['selected'];
+      }
+
+      constructor() { // Añadimos las propiedades
+        super(); // Jalamos las del prototypo
+        this.selected = true; // Seteamos propiedades
+        const shadowRoot = this.attachShadow({mode: 'open'}); // Abrimos el shadow root y lo añadimos a una variable
+        const templ = document.currentScript.ownerDocument.querySelector('template');
+        shadowRoot.appendChild(document.importNode(templ.content, true));
+
+        // shadowRoot.innerHTML = `
+        //   <style>
+        //     button {
+        //       background-color: purple;
+        //       color: white;
+        //     }
+        //   </style>
+        //   <button>My element button</button>
+        //   `
+      }
+
+      connectedCallback() { // Eventos del componente
+        this.addEventListener('click', this._onClick.bind(this));
+      }
+
+      attributeChangedCallback(name, oldVal, newVal) { // escucha el cambio de atributo
+        if(name === 'selected') {
+          this.selected = newVal;
+        }
+      }
+
+      get selected() { // Agrega el valor del atributo a la propiedad
+        return this.getAttribute('selected');
+      }
+
+      set selected(val) { // Refleja la propiedad al atributo
+        if(this.selected === val) {
+          return;
+        }
+        this.setAttribute('selected', val);
+      }
+
+      _onClick(event) { // Metodo de la clase _ para privado
+        console.log('I was clicked!!!');
+        this.dispatchEvent(new CustomEvent('my-element-clicked', {
+          bubbles: true,
+          composed: true,
+          detail: {
+            clicked: true
+          }
+        }));
+        this.shadowRoot.querySelector('button').innerText = 'other text';
+      }
+
+    }
+    customElements.define('my-element', MyElement);
+  })(window.customElements, document)
+</script>
