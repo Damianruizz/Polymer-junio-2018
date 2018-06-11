@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Element</title>
+</head>
+	<link rel="import" href="my-element.html">
+<body>
+	<my-element></my-element>
+</body>
+
+<script>
+	const element = document.querySelector('my-element', (event) => {
+		console.log(event.detail);
+	})
+</script>
+</html>
