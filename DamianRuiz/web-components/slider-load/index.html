@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="import" href="slider-load.html">
+    <title>Slider Load</title>
+  </head>
+  <body>
+  	<slider-load></slider-load>
+  	<div class="content">
+  		<div class="center text">
+  			¡Bienvenido!
+  		</div>
+  		<div class="center button">
+  			<button>Iniciar Carga</button>
+  		</div>
+  		<div class="center messagge-success" id="messagge">
+  		</div>
+  	</div>
+  </body>
+
+  <script>
+		const button = document.querySelector('button');
+		const sliderLoad = document.querySelector('slider-load');
+
+		button.addEventListener('click', (e) => {
+			sliderLoad.setAttribute('speed', 200);
+		});
+
+		sliderLoad.addEventListener('success-load', (event) => { document.getElementById("messagge").innerHTML = event.detail.messagge; });
+	</script>
+</html>

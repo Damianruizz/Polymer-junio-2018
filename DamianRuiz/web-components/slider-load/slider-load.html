@@ -1,0 +1,82 @@
+<template id="sliderLoad">
+	<div class="slider">
+  </div>
+  
+  <style>
+		.slider {
+		  width: 0%;
+		  background-color: #ff0000b5;
+		  height: 18px;
+		  border-radius: 1px;
+		}
+  </style>
+</template>
+
+<script>
+  (function sliderLoad(customElements, document) {
+    'use strict';
+
+    class SliderLoad extends HTMLElement {
+      static get observedAttributes() { 
+        return ['speed'];
+      }
+
+      constructor() { 
+        super(); 
+        this.speed;
+        const shadowRoot = this.attachShadow( {mode: 'open'} ); 
+        const temp = document.currentScript.ownerDocument.querySelector('template');
+        shadowRoot.appendChild(document.importNode(temp.content, true));
+      }
+
+      attributeChangedCallback(name, oldVal, newVal) { 
+        if(name === 'speed') {
+          this.speed = newVal;
+          console.log(this.speed);
+          this.showLoad(this.speed);
+        }
+      }
+
+      get speed() { 
+        return this.getAttribute('speed');
+      }
+
+      set speed(val) { 
+        if(this.speed === val) return;
+        this.setAttribute('speed', val);
+      }
+
+			showLoad(speed){
+				let slider = this.shadowRoot.querySelector('.slider')
+				let advance = 0;
+
+				let interval = setInterval(() => { 
+					if (advance <= 100) {
+						advance += this.getAdvance();
+						slider.style.width = `${advance}%`;
+					} else {
+						clearInterval(interval);
+						this.dispatchEventSuccess();
+					} 
+				}, speed);
+			}
+
+			dispatchEventSuccess(){
+				console.log('dispatchEventSuccess');
+				this.dispatchEvent(new CustomEvent('success-load', {
+          bubbles: true,
+          composed: true,
+          detail: {
+            load: true,
+            messagge: '¡Carga exitosa!'
+          }
+        }));
+			}
+
+			getAdvance(){
+				return Math.floor((Math.random() * 5) + 1);
+			}
+    }
+    customElements.define('slider-load', SliderLoad);
+  })(window.customElements, document)
+</script>

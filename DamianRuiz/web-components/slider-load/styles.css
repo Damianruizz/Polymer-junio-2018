@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Box Model */
+html {
+  font-size: 16px;
+  height: 100%
+}
+
+body {
+  font-family: sans-serif;
+  height: 100%
+}
+
+.content{
+  height: 100%;
+  position: relative;
+}
+
+.center{
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);<
+}
+
+.text{
+  top: 45%;
+  font-size: 50px;
+}
+
+.button{
+  top: 55%;
+}
+
+.messagge-success{
+  top: 67%;
+  font-size: 32px;
+  color: green;
+}
+
+button{
+  font-size: 25px;
+  background-color: #03A9F4;
+  padding: 15px 60px;
+  border-radius: 15px;
+  color: white;
+}
