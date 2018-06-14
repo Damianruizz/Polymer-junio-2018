@@ -9,6 +9,11 @@
   <body>
 
     <nav class="navbar">
+      <div class="hamburger-button" onclick="toggleHamburgerButton(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
       <ul class="navbar__list">
         <li class="navbar__item">
           <a class="navbar__link" href="">HOME</a>
@@ -25,10 +30,27 @@
         <li class="navbar__item">
           <a class="navbar__link" href="">CYCLING CLUB</a>
         </li>
+        <li class="navbar__item">
+          <div class="inline">
+            <input type="text" name="inputSearch" class="input-search" />
+          </div>
+        </li>
       </ul>
-      <div class="inline">
-        <input type="text" name="inputSearch" class="input-search" />
-      </div>
+    </nav>
+
+    <nav class="sidenav">
+      <span class="toggleSidenav">x</span>
+      <ul class="sidenav__list">
+        <li class="sidenav__item">
+          <a class="sidenav__link" href="">Mobile</a>
+        </li>
+        <li class="sidenav__item">
+          <a class="sidenav__link" href="">About us</a>
+        </li>
+        <li class="sidenav__item">
+          <a class="sidenav__link" href="">Contacto</a>
+        </li>
+      </ul>
     </nav>
 
     <div class="image">
@@ -126,5 +148,6 @@
         <a class="button">Find Yout Perfect Drum</a>
       </div>
     </div>
+    <script async src="index.js"></script>
   </body>
 </html>

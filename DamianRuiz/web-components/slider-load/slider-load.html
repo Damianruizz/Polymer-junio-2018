@@ -1,7 +1,7 @@
 <template id="sliderLoad">
 	<div class="slider">
   </div>
-  
+
   <style>
 		.slider {
 		  width: 0%;
@@ -32,7 +32,6 @@
       attributeChangedCallback(name, oldVal, newVal) { 
         if(name === 'speed') {
           this.speed = newVal;
-          console.log(this.speed);
           this.showLoad(this.speed);
         }
       }
@@ -62,7 +61,6 @@
 			}
 
 			dispatchEventSuccess(){
-				console.log('dispatchEventSuccess');
 				this.dispatchEvent(new CustomEvent('success-load', {
           bubbles: true,
           composed: true,

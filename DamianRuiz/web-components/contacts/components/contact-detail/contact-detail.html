@@ -1,0 +1,92 @@
+<template id="contactDetail">
+  <style>
+    .content-card {
+      height: 100%;
+      margin: 20px;
+      padding: 15px;
+      border: 1px solid red;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    .picture { 
+      height: 35%;
+      margin: 35px;
+     }
+    .contact-information {
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      font-size: 25px;
+      align-items: center;
+    }
+    img { max-width: 300px; }
+  </style>
+
+  <div class="content-card">
+    <div class="picture">
+      <picture>
+        <img>
+      </picture>
+    </div>
+    <div class="contact-information">
+      <p class="contact-name"></p>
+      <p class="contact-phone"></p>
+      <p class="contact-direction"></p>
+    </div>
+  </div>
+</template>
+
+<script>
+  (function contactDetail(customElements, document) {
+    'use strict';
+
+    class ContactDetail extends HTMLElement {
+      static get observedAttributes() { 
+        return ['image', 'phone', 'contact-name', 'direction'];
+      }
+
+      constructor() { 
+        super(); 
+        this.contactName;
+        this.phone;
+        this.direction;
+        this.image;
+
+        const shadowRoot = this.attachShadow( {mode: 'open'} ); 
+        const temp = document.currentScript.ownerDocument.querySelector('#contactDetail');
+        shadowRoot.appendChild(document.importNode(temp.content, true));
+      }
+
+      attributeChangedCallback(name, oldVal, newVal) { 
+        this.setAttributes();
+      }
+
+      get phone() { 
+        return this.getAttribute('phone');
+      }      
+
+      get contactName() { 
+        return this.getAttribute('contact-name');
+      }      
+
+      get direction() { 
+        return this.getAttribute('direction');
+      }      
+
+      get image() { 
+        return this.getAttribute('image');
+      }
+
+      setAttributes(){
+        this.shadowRoot.querySelector('img').setAttribute('src', `img/${this.image}`);
+        this.shadowRoot.querySelector('.contact-name').innerHTML =  this.contactName;
+        this.shadowRoot.querySelector('.contact-phone').innerHTML =  this.phone;
+        this.shadowRoot.querySelector('.contact-direction').innerHTML =  this.direction;
+      }
+    }
+    customElements.define('contact-detail', ContactDetail);
+  })(window.customElements, document)
+</script>

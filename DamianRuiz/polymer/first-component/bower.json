@@ -1,0 +1,23 @@
+{
+  "name": "first-component",
+  "homepage": "https://github.com/Damianruizz/Polymer-junio-2018",
+  "authors": [
+    "robertodamian.ruiz.contractor <robertodamian.ruiz.contractor@bbva.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0"
+  },
+  "devDependencies": {
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  }
+}

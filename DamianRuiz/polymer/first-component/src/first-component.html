@@ -1,0 +1,29 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="first-component">
+	<template>
+		<style>
+			h1 { font-size: 40px; }
+		</style>
+
+		<h1>Hola me llamo [[name]]</h1>
+	</template>
+
+	<script>
+		(function firstComponent(customElements) {
+			class FirstComponent extends Polymer.Element {
+				static get is() { return 'first-component'; }
+				static get properties() { 
+					return {
+						name: {
+							type: String,
+							value: 'Damian'
+						}
+					}
+				}
+			}
+
+			customElements.define(FirstComponent.is, FirstComponent);
+		})(window.customElements);
+	</script>
+</dom-module>

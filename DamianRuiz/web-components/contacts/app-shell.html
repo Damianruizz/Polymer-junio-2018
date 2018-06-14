@@ -1,0 +1,56 @@
+<template id="appShell">
+  <style>
+    .content{
+      height: 100%;
+      display: flex;
+    }
+    .contacts-detail, .contacts-items{ height: 100%; }
+    .contacts-detail { width: 60%; }
+    .contacts-items { width: 40%; }
+  </style>
+  <div class="content">
+    <div class="contacts-detail">
+      <slot name="contacts-detail"></slot>
+    </div>
+    <div class="contacts-items">
+      <slot name="contacts-items"></slot>
+    </div>
+  </div>
+</template>
+
+<script>
+  (function appShell(customElements, document) {
+    'use strict';
+
+    class AppShell extends HTMLElement {
+      static get observedAttributes() { 
+        return [''];
+      }
+
+      constructor() { 
+        super(); 
+        const shadowRoot = this.attachShadow( {mode: 'open'} ); 
+        const temp = document.currentScript.ownerDocument.querySelector('#appShell');
+        shadowRoot.appendChild(document.importNode(temp.content, true));
+      }
+
+      connectedCallback(){
+        this.addEventListener('change-detail', this.changeDetail );
+      }
+
+      changeDetail(e){
+        this.setAttributes(e.detail);
+      }
+
+      setAttributes(attributes){
+        const contactDetail = this.querySelector('contact-detail');
+
+        contactDetail.setAttribute('image', attributes.image);
+        contactDetail.setAttribute('contact-name', attributes.contactName);
+        contactDetail.setAttribute('phone', attributes.phone);
+        contactDetail.setAttribute('direction', attributes.direction);
+      }
+    }
+    customElements.define('app-shell', AppShell);
+  })(window.customElements, document)
+</script>
