@@ -1,0 +1,97 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="contact-item.html">
+
+<dom-module id="app-shell">
+	<template>
+		<style>
+			.content, .button{
+	      height: 100%;
+	      display: flex;
+	      justify-content: flex-end;
+	    }
+	    .button { 
+				justify-content: center;
+				width: 40%;
+				float: right; 
+  		}
+	    .contacts-detail, .contacts-items{ height: 100%; }
+	    .contacts-detail { width: 60%; }
+	    .contacts-items { width: 40%; }
+		</style>
+		<div class="content">
+			<div class="contact-detail">
+			
+			</div>
+			<div class="contacts-items">
+				<template is="dom-repeat" items="[[contacts]]">
+					<contact-item name="[[item.name]]" phone="[[item.phone]]" photo="[[item.photo]]" favorite="[[item.favorite]]"></contact-item>
+				</template>
+			</div>
+		</div>
+		<div class="button">
+			<paper-button on-click="newContactModal" raised>Nuevo Contacto</paper-button>
+		</div>
+
+		<paper-dialog id="modal" modal>
+		  <paper-input label="Nombre" value="{{contactName}}"></paper-input>
+		  <paper-input label="Telefono" value="{{contactPhone}}"></paper-input>
+		  <div class="buttons">
+		    <paper-button autofocus on-click="saveContact">Aceptar</paper-button>
+		  </div>
+		</paper-dialog>
+	</template>
+
+	<script>
+		(function AppShell(customElements) {
+			class AppShell extends Polymer.Element {
+				static get is() { return 'app-shell'; }
+				static get properties() { 
+					return {
+						contacts: {
+							type: Array,
+							value: [
+								{
+									name: 'Damian',
+									phone: '5514977119',
+									favorite: true,
+									photo: 'user1.png'
+								},
+								{
+									name: 'Juan',
+									phone: '0000000000',
+									favorite: false
+								},
+								{
+									name: 'Javier',
+									phone: '123456789',
+									favorite: true,
+									photo: 'user2.jpg'
+								},
+								{
+									name: 'Joaquin',
+									phone: '0987654321',
+									favorite: false
+								}
+							]
+						}
+					}
+				}
+				newContactModal(e) {
+					this.$.modal.open();
+				}
+				saveContact(e) {
+					this.push('contacts', {
+						name: this.contactName,
+						phone: this.contactPhone
+					});
+					this.$.modal.close();
+				}
+			}
+
+			customElements.define(AppShell.is, AppShell);
+		})(window.customElements);
+	</script>
+</dom-module>
