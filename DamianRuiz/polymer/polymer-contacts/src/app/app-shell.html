@@ -2,6 +2,7 @@
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="contact-item.html">
 
 <dom-module id="app-shell">
@@ -38,6 +39,7 @@
 		<paper-dialog id="modal" modal>
 		  <paper-input label="Nombre" value="{{contactName}}"></paper-input>
 		  <paper-input label="Telefono" value="{{contactPhone}}"></paper-input>
+		  <paper-checkbox checked="{{contactFavorite}}">Favorito</paper-checkbox>
 		  <div class="buttons">
 		    <paper-button autofocus on-click="saveContact">Aceptar</paper-button>
 		  </div>
@@ -68,12 +70,7 @@
 									name: 'Javier',
 									phone: '123456789',
 									favorite: true,
-									photo: 'user2.jpg'
-								},
-								{
-									name: 'Joaquin',
-									phone: '0987654321',
-									favorite: false
+									photo: 'user3.png'
 								}
 							]
 						}
@@ -85,7 +82,9 @@
 				saveContact(e) {
 					this.push('contacts', {
 						name: this.contactName,
-						phone: this.contactPhone
+						phone: this.contactPhone,
+						favorite: this.contactFavorite,
+						photo: 'user2.jpg'
 					});
 					this.$.modal.close();
 				}

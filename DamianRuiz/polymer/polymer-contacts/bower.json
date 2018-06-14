@@ -4,7 +4,8 @@
     "polymer": "Polymer/polymer#^2.0.0",
     "paper-button": "PolymerElements/paper-button/elements/paper-button#^2.1.1",
     "paper-dialog": "PolymerElements/paper-dialog#^2.1.1",
-    "paper-input": "PolymerElements/paper-input#^2.2.2"
+    "paper-input": "PolymerElements/paper-input#^2.2.2",
+    "paper-checkbox": "PolymerElements/paper-checkbox#^2.0.4"
   },
   "devDependencies": {
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
