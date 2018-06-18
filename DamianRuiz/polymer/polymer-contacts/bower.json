@@ -5,7 +5,9 @@
     "paper-button": "PolymerElements/paper-button/elements/paper-button#^2.1.1",
     "paper-dialog": "PolymerElements/paper-dialog#^2.1.1",
     "paper-input": "PolymerElements/paper-input#^2.2.2",
-    "paper-checkbox": "PolymerElements/paper-checkbox#^2.0.4"
+    "paper-checkbox": "PolymerElements/paper-checkbox#^2.0.4",
+    "paper-card": "PolymerElements/paper-card#^2.1.0",
+    "iron-image": "PolymerElements/iron-image#^2.2.1"
   },
   "devDependencies": {
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"

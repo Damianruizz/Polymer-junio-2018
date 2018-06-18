@@ -1,0 +1,69 @@
+<dom-module id="carousel-photos">
+	<template>
+		<style>
+			img { max-height: 250px; }
+			paper-card .content { 
+				width: 100%;
+				display: flex;
+			}
+			.arrow { max-height: 50px; }
+			.arrow-content { 
+				display: flex;
+				align-items: center;
+				padding: 0px 20px;
+			}
+		</style>
+
+		<paper-card>
+			<div class="content">
+				<div class="arrow-content"><img class="arrow" on-click="changeImage" id="left" src="../src/img/left.png"></div>
+				<picture>
+	        <img src="../src/img/[[currentImage]]">
+	      </picture>
+	      <div class="arrow-content"><img class="arrow" on-click="changeImage" id="right" src="../src/img/right.png"></div>
+			</div>
+		</paper-card>
+	</template>
+	<script>
+		(function carouselPhotos(customElements) {
+			class CarouselPhotos extends Polymer.Element {
+				static get is() { return 'carousel-photos'; }
+				static get properties() {
+					return {
+						photos: {
+							type: Array,
+							value() { return []; }
+						},
+						currentImage: {
+							type: String,
+							value() { return ''; }
+						}							
+					}
+				}
+				static get observers() {
+					return [
+						'currentImageObserver(currentImage)',
+						'photosObserver(photos)'
+					]
+				}
+				photosObserver(photos){
+					this.set('currentImage', photos[0]);
+				}
+				currentImageObserver(currentImage) {
+					if (currentImage == '') this.set('currentImage', this.photos[0]);
+				}
+				changeImage(e){
+					if (e.target.id == 'left') {
+						if (this.photos.indexOf(this.currentImage) <= 0) this.set('currentImage', this.photos[this.photos.length-1]);
+							else this.set('currentImage', this.photos[this.photos.indexOf(this.currentImage) - 1]);
+					} else {
+						if (this.photos.indexOf(this.currentImage) >= this.photos.length - 1) this.set('currentImage', this.photos[0]);
+							else this.set('currentImage', this.photos[this.photos.indexOf(this.currentImage) + 1]);
+					}
+				}
+			}
+
+			customElements.define(CarouselPhotos.is, CarouselPhotos);
+		})(window.customElements);
+	</script>
+</dom-module>
