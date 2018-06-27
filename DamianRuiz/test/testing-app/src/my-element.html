@@ -1,0 +1,42 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+
+<dom-module id="my-element">
+	<template>
+		<style>
+		</style>
+
+		<h2>[[fullName]]</h2>
+	</template>
+
+	<script>
+		(function myElement(customElements) {
+			'use strict';
+
+			class MyElement extends Polymer.Element {
+				static get is() { return 'my-element'; }
+				static get properties() {
+					return {
+						name: {
+							type: String,
+							value: 'Roberto'
+						},
+						lastName: {
+							type: String,
+							value: 'Damian'
+						},
+						fullName: {
+							type: String,
+							computed: 'getFullName(name, lastName)'
+						}
+					}
+				}
+
+				getFullName(name, lastName) {
+					return `${name} ${lastName}`;
+				}
+			}
+
+			customElements.define(MyElement.is, MyElement);
+		})(window.customElements)
+	</script>
+</dom-module>

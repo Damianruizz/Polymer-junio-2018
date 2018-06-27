@@ -1,0 +1,52 @@
+<link rel="import"href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import"href="../bower_components/iron-icons/iron-icons.html">
+
+<dom-module id="button-element">
+  <template>
+    <style>
+      paper-icon-button {
+        width: 100px;
+        height: 100px;
+        border-radius: 5px;
+      }
+      paper-icon-button[active] {
+        box-shadow: 0px 1px #888888;
+      }
+    </style>
+
+    <paper-icon-button toggles icon="[[icon]]" src="src/img/[[image]]" value-element="[[currentElement]]" player-number="[[playerNumber]]" on-click="_selectElement"></paper-icon-button>
+  </template>
+
+  <script>
+    (function buttonElement(customElements) {
+      'use strict';
+
+      class ButtonElement extends Polymer.Element {
+        static get is() { return 'button-element'; }
+        static get properties() {
+          return {
+            image: String,
+            icon: String,
+            currentElement: String,
+            playerNumber: String,
+            elementSelected: {
+              type: Object,
+              notify: true
+            }
+          }
+        }
+
+        _selectElement(e) {
+          if (e.target.active) {
+            this.set('elementSelected', {
+              player: e.target.playerNumber,
+              value: e.target.valueElement
+            });
+          } else this.set('elementSelected', {});
+        }
+      }
+
+      customElements.define(ButtonElement.is, ButtonElement);
+    })(window.customElements)
+  </script>
+</dom-module>

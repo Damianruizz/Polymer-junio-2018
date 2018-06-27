@@ -1,0 +1,49 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+
+<dom-module id="evaluate-game">
+  <script>
+    (function evaluateGame(customElements) {
+      'use strict';
+
+      class EvaluateGame extends Polymer.Element {
+        static get is() { return 'evaluate-game'; }
+        static get properties() {
+          return {
+            selectedPlayerOne: Object,
+            selectedPlayerTwo: Object,
+            winner: {
+              type: Number,
+              notify: true
+            },
+            twoSelected: {
+              type: Boolean,
+              notify: true
+            }
+          }
+        }
+        static get observers() {
+          return [
+            'selectedObserver(selectedPlayerOne, selectedPlayerTwo)'
+          ]
+        }
+        selectedObserver(selectedPlayerOne, selectedPlayerTwo) {
+          if (selectedPlayerOne && selectedPlayerOne.player && selectedPlayerTwo && selectedPlayerTwo.player) {
+            this.set('winner',this._getResultGame(selectedPlayerOne.value, selectedPlayerTwo.value));
+            this.set('twoSelected', true);
+          } else this.set('twoSelected', false);
+        }
+        _getResultGame(playerOne, playerTwo) {
+          if (playerOne == playerTwo) return 0;
+            else if (playerOne == 'stone' && playerTwo == 'paper') return 2;
+            else if (playerOne == 'stone' && playerTwo == 'scissor') return 1;
+            else if (playerOne == 'paper' && playerTwo == 'stone') return 1;
+            else if (playerOne == 'paper' && playerTwo == 'scissor') return 2;
+            else if (playerOne == 'scissor' && playerTwo == 'paper') return 1;
+            else if (playerOne == 'scissor' && playerTwo == 'stone') return 2;
+        }
+      }
+
+      customElements.define(EvaluateGame.is, EvaluateGame);
+    })(window.customElements)
+  </script>
+</dom-module>

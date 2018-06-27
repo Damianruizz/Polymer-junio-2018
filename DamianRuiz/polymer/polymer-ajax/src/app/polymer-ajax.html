@@ -1,0 +1,53 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/bower_components/app-route/app-route.html">
+<link rel="import" href="/bower_components/app-route/app-location.html">
+<link rel="import" href="/bower_components/iron-pages/iron-pages.html">
+
+<dom-module id="polymer-ajax">
+	<template>
+		<style>			
+		</style>
+
+		<a href="home">home</a>
+		<a href="naves">naves</a>
+		<a href="default">default</a>
+
+		<app-location route="{{route}}"></app-location>
+		<app-route
+			route="{{route}}"
+			pattern="/:page"
+			data="{{data}}">
+		</app-route>
+		<iron-pages selected="{{data.page}}" attr-for-selected="page" fallback-selection="home">
+			<section page="home">Home</section>
+			<section page="naves">Naves</section>
+			<section page="default">Default</section>
+		</iron-pages>
+
+		<iron-ajax
+			auto
+			id="starshipsRequest"
+			url="https://swapi.co/api/starships/"
+			handle-as="json"
+			last-response="{{starships}}">
+		</iron-ajax>
+	</template>
+
+	<script>
+		(function polymerAjax(customElements){
+			'use strict';
+
+			class PolymerAjax extends Polymer.Element {
+				static get is() { return 'polymer-ajax'; }
+				static get properties() {
+					return {
+
+					}
+				}
+			}
+
+			customElements.define(PolymerAjax.is, PolymerAjax);
+		})(window.customElements);
+	</script>
+</dom-module>

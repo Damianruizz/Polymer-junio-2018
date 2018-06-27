@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Polymer Test</title>
+  <script src="../bower_components/web-component-tester/browser.js"></script>
+  <script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+  <link rel="import" href="/src/evaluate-game.html">
+</head>
+<body>
+  <test-fixture id="evaluate-game">
+    <template>
+      <evaluate-game></evaluate-game>
+    </template>
+  </test-fixture>
+
+  <script>
+    suite('test for game', function() {
+      const gameTarget = fixture('evaluate-game');
+
+      test('P1: stone, P2: scissor - The winner is player one', function() {
+        assert.equal(gameTarget._getResultGame('stone', 'scissor'), 1);
+      });
+      test('P1: scissor, P2: paper - The winner is player one', function() {
+        assert.equal(gameTarget._getResultGame('scissor', 'paper'), 1);
+      });
+      test('P1: paper, P2: stone - The winner is player one', function() {
+        assert.equal(gameTarget._getResultGame('paper', 'stone'), 1);
+      });
+      test('P1: scissor, P2: stone - The winner is player two', function() {
+        assert.equal(gameTarget._getResultGame('scissor', 'stone'), 2);
+      });
+      test('P1: paper, P2: scissor - The winner is player two', function() {
+        assert.equal(gameTarget._getResultGame('paper', 'scissor'), 2);
+      });
+      test('P1: stone, P2: paper - The winner is player two', function() {
+        assert.equal(gameTarget._getResultGame('stone', 'paper'), 2);
+      });
+      test('P1: stone, P2: stone - Its a tie', function() {
+        assert.equal(gameTarget._getResultGame('stone', 'stone'), 0);
+      });
+      test('P1: paper, P2: paper - Its a tie', function() {
+        assert.equal(gameTarget._getResultGame('paper', 'paper'), 0);
+      });
+      test('P1: scissor, P2: scissor - Its a tie', function() {
+        assert.equal(gameTarget._getResultGame('scissor', 'scissor'), 0);
+      });
+    });
+  </script>
+</body>
+</html>
