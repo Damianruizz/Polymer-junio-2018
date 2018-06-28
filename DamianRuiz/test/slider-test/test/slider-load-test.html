@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../bower_components/web-component-tester/browser.js"></script>
+  <link rel="import" href="../src/slider-test.html">
+</head>
+<body>
+  <text-fixture id="slider-test">
+    <template>
+      <slider-test></slider-test>
+    </template>
+  </text-fixture>
+
+  <script>
+    suite('Test for the time between each iteration', () => {
+      setup(() => {
+        const sliderTarget = fixture('slider-test');
+      });
+      test('Test for slow speed', () => {
+        expect(sliderTarget.getTime(sliderTarget.getValuesSpeedDirectory('slow'))).to.be.within(6, 10);
+      });
+      test('Test for fast speed', () => {
+        expect(sliderTarget.getTime('fast')).to.be.within(1, 4);
+      });
+    });
+
+    suite('Test for the growth of the bar between each iteration', () => {
+      setup(() => {
+        const sliderTarget = fixture('slider-test');
+      });
+      test('Test for slow speed', () => {
+        expect(sliderTarget.getAdvance('slow')).to.be.within(1, 20);
+      });
+      test('Test for fast speed', () => {
+        expect(sliderTarget.getAdvance('fast')).to.be.within(1, 60);
+      });
+    });
+
+    suite('Test for the message of success', () => {
+      setup(() => {
+        const sliderTarget = fixture('slider-test');
+      });
+      test('Test for finish in slow speed', () => {
+        sliderTarget.addEventListener('load-finished', function(event) {
+          assert.equal(event.detail, 'finish in slow mode');
+          done();
+        });
+        sliderTarget.showMessageSuccess('slow');
+      });
+      test('Test for finish in fast speed', () => {
+        sliderTarget.addEventListener('load-finished', function(event) {
+          assert.equal(event.detail, 'finish in fast mode');
+          done();
+        });
+        sliderTarget.showMessageSuccess('fast');
+      });
+    });
+  </script>
+</body>
+</html>

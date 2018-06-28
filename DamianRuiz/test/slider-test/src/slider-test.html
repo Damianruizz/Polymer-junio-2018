@@ -1,0 +1,102 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+
+<dom-module id="slider-test">
+  <template>
+    <style>
+      .content{
+        height: 100%;
+      }
+      .center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .text{
+        top: 45%;
+        font-size: 50px;
+      }
+      .button{
+        top: 55%;
+      }
+      .messagge-success{
+        top: 67%;
+        font-size: 32px;
+        color: green;
+      }
+      paper-button{
+        font-size: 25px;
+        background-color: #03A9F4;
+        padding: 15px 60px;
+        color: white;
+      }
+      .slider {
+        width: 0%;
+        background-color: #ff0000b5;
+        height: 18px;
+        border-radius: 1px;
+      }
+    </style>
+
+    <div class="slider" id="slider">
+    </div>
+
+    <div class="content center">
+      <div class="center text">
+        ¡Bienvenido!
+      </div>
+      <div class="center button">
+        <paper-button on-click="sliderMain">Iniciar Carga</paper-button>
+      </div>
+      <div class="center messagge-success" id="messagge">
+        
+      </div>
+    </div>
+  </template>
+  <script>
+    (function sliderTest(customElements) {
+      'use strict';
+
+      class SliderTest extends Polymer.Element {
+        static get is() { return 'slider-test'; }
+        static get properties() {
+          return {
+            speed: String,
+            speedDirectory: {
+              type: Object,
+              value: {
+                slow: {
+                  advance: [1, 20],
+                  time: [6, 10]
+                },
+                fast: {
+                  advance: [1, 60],
+                  time: [1, 4]
+                }
+              }
+            }
+          }
+        }
+        sliderMain(e) {
+          console.log(this.getValuesSpeedDirectory(this.speed).advance);
+          this.getAdvance(this.getValuesSpeedDirectory(this.speed));
+          this.getTime();
+        }
+        getAdvance(valueArray){
+          //console.log(Math.floor((Math.random() * 5) + 1));
+          return Math.floor((Math.random() * 5) + 1);
+        }
+        getTime(){
+          //console.log(Math.floor((Math.random() * 100) + 1));
+          return Math.floor((Math.random() * 100) + 1);
+        }
+        getValuesSpeedDirectory(speed) {
+          return this.speedDirectory[speed];
+        }
+      }
+
+      customElements.define(SliderTest.is, SliderTest);
+    })(window.customElements)
+  </script>
+</dom-module>
