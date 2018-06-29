@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs</title>
+  </head>
+  <body>
+    <div class="slider" id="slider">
+    </div>
+
+    <div class="content">
+      <div class="table center">
+        <div class="header-table">
+          <ul class="list" id="list">
+            <li id="listElement1" class="list-element" onclick="changeTab(event, '1')">Inicio</li>
+          </ul>
+        </div>
+        <div class="content-table" id="contentTable">
+          <div class="content-text" id="1">
+            <div>
+              <input type="text" name="title" placeholder="Titulo" id="title">  
+            </div>
+            <div>
+              <textarea placeholder="Contenido" name="contentTab" rows="20" cols="50" id="contentTab"></textarea>
+            </div>
+            <div class="button">
+              <button id="btnCreateTab">Crear</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="index.js" async></script>
+-</html>

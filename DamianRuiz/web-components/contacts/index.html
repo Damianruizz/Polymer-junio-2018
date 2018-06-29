@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="import" href="app-shell.html">
+    <link rel="import" href="components/contact-item/contact-item.html">
+    <link rel="import" href="components/contact-detail/contact-detail.html">
+    <title>Contacts</title>
+  </head>
+  <body>
+    <div class="container">
+      <app-shell>
+        <contact-detail contact-name="Damian" phone="5514977119" direction="Mariano Escobedo 18" image="user1.png" slot="contacts-detail"></contact-detail>
+        <contact-item contact-name="Damian" phone="5514977119" direction="Mariano Escobedo 18" image="user1.png" slot="contacts-items"></contact-item>
+        <contact-item contact-name="Juanito" phone="123455667" direction="Mariano Escobedo 34" image="user2.jpg" slot="contacts-items"></contact-item>
+        <contact-item contact-name="Pedro" phone="98765433" direction="Mariano Escobedo 565" image="user3.png" slot="contacts-items"></contact-item>        
+      </app-shell>
+    </div>
+  </body>
+</html>
