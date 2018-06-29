@@ -36,6 +36,8 @@
         background-color: #ff0000b5;
         height: 18px;
         border-radius: 1px;
+        -webkit-transition: width 1s;
+        transition: width 1s;
       }
     </style>
 
@@ -50,7 +52,7 @@
         <paper-button on-click="sliderMain">Iniciar Carga</paper-button>
       </div>
       <div class="center messagge-success" id="messagge">
-        
+        [[message]]
       </div>
     </div>
   </template>
@@ -79,20 +81,35 @@
           }
         }
         sliderMain(e) {
-          console.log(this.getValuesSpeedDirectory(this.speed).advance);
-          this.getAdvance(this.getValuesSpeedDirectory(this.speed));
-          this.getTime();
+          let advance = 0;
+          this.$.slider.style.width = `${advance}%`;
+
+          let interval = setInterval(() => { 
+            if (advance <= 100) {
+              advance += this.getAdvance(this.getValuesSpeedDirectory(this.speed).advance);
+              this.$.slider.style.width = `${advance}%`;
+            } else {
+              clearInterval(interval);
+              this.showMessageSuccess(this.speed);
+            } 
+          }, this.getTime(this.getValuesSpeedDirectory(this.speed).time) * 1000);
         }
         getAdvance(valueArray){
-          //console.log(Math.floor((Math.random() * 5) + 1));
-          return Math.floor((Math.random() * 5) + 1);
+          return Math.floor(Math.random() * (valueArray[0] - valueArray[1]) + valueArray[1]);
         }
-        getTime(){
-          //console.log(Math.floor((Math.random() * 100) + 1));
-          return Math.floor((Math.random() * 100) + 1);
+        getTime(valueArray){
+          return Math.floor(Math.random() * (valueArray[0] - valueArray[1]) + valueArray[1]);
         }
         getValuesSpeedDirectory(speed) {
           return this.speedDirectory[speed];
+        }
+        showMessageSuccess(speed) {
+          this.dispatchEvent(new CustomEvent('load-finished', {
+            bubbles: true,
+            detail: {
+              message: `Finish in ${speed} mode`
+            }
+          }));
         }
       }
 
